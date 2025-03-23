@@ -1,0 +1,141 @@
+# Moops Project Rules and Patterns
+
+## Project Conventions
+
+### File Structure
+- Feature-based organization with each feature in its own directory
+- Components specific to a feature should be in the feature's components directory
+- Shared components go in src/components
+- Utility functions go in src/lib
+
+### Naming Conventions
+- React components use PascalCase (e.g., ColorSwatch, TailwindColorGrid)
+- Files containing React components use PascalCase.tsx
+- Utility functions and hooks use camelCase
+- Files containing utility functions use kebab-case.ts
+- Feature directories use kebab-case (e.g., color-grid)
+
+### Import Conventions
+- Use absolute imports with @ alias for src directory
+  - Example: `import { Button } from "@/components/ui/button"`
+- Group imports in the following order:
+  1. React and external libraries
+  2. Components
+  3. Hooks
+  4. Utilities
+  5. Types
+  6. Assets
+
+### Component Patterns
+- Use functional components with TypeScript interfaces for props
+- Use shadcn/ui components as the foundation for UI elements
+- Use the cn utility for combining Tailwind classes
+- Export components as named exports from feature index files
+
+## Styling Patterns
+
+### Tailwind Usage
+- Use Tailwind utility classes for styling
+- Use the cn utility from @/lib/utils for conditional class names
+- Follow the color naming convention: `{color}-{shade}` (e.g., red-500)
+- Use consistent spacing scale (m-2, p-4, etc.)
+
+### Component Styling
+- Use Tailwind's group and peer modifiers for component states
+- Use dark: variant for dark mode styles
+- Use responsive prefixes (sm:, md:, lg:) for responsive design
+
+## State Management
+
+### Local State
+- Use useState for component-local state
+- Use useReducer for more complex state logic within a component
+
+### Shared State
+- Use React Context for state that needs to be shared across components
+- Create custom hooks to access and update context state
+- Follow the pattern:
+  ```tsx
+  // Create context
+  const PaletteContext = createContext<PaletteContextType | undefined>(undefined);
+  
+  // Create provider
+  export function PaletteProvider({ children }: { children: React.ReactNode }) {
+    // State and logic here
+    return <PaletteContext.Provider value={value}>{children}</PaletteContext.Provider>;
+  }
+  
+  // Create hook
+  export function usePalette() {
+    const context = useContext(PaletteContext);
+    if (context === undefined) {
+      throw new Error("usePalette must be used within a PaletteProvider");
+    }
+    return context;
+  }
+  ```
+
+## TypeScript Patterns
+
+### Type Definitions
+- Define interfaces for component props
+- Use type for simple type aliases
+- Use interface for object shapes that might be extended
+- Export types from feature index files when needed by other features
+
+### Type Examples
+```typescript
+// Component props
+interface ColorSwatchProps {
+  palette: string;
+  shade: number;
+  onClick?: () => void;
+}
+
+// Context value
+interface PaletteContextType {
+  palette: ColorSelection[];
+  addColor: (color: ColorSelection) => void;
+  removeColor: (id: string) => void;
+}
+
+// Data structures
+interface ColorSelection {
+  id: string;
+  palette: string;
+  shade: number;
+  hexValue: string;
+}
+```
+
+## Testing Patterns
+- Tests will be added in a future phase of the project
+
+## Performance Considerations
+- Use React.memo for components that render frequently but with the same props
+- Use useCallback for functions passed as props to memoized components
+- Use useMemo for expensive calculations
+- Be mindful of the number of color swatches rendered at once
+
+## Accessibility Guidelines
+- Ensure sufficient color contrast for text
+- Provide meaningful aria labels for interactive elements
+- Support keyboard navigation
+- Respect user preferences for reduced motion
+
+## Project-Specific Patterns
+
+### Color Management
+- Colors are organized by palette (red, blue, etc.) and shade (50, 100, etc.)
+- Tailwind class names follow the pattern: `{palette}-{shade}`
+- Hex values should be available for each color
+- Selected colors should be stored in a palette context
+
+### Component Preview
+- Preview components should accept a theme prop for applying the selected palette
+- Preview components should demonstrate various UI states (default, hover, active)
+- Preview components should be responsive
+
+### Export Format
+- JSON export should include both Tailwind class names and hex values
+- Format should be compatible with Tailwind theme configuration
