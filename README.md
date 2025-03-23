@@ -1,54 +1,131 @@
-# React + TypeScript + Vite
+# Vite TW Color - Tailwind Color Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite TW Color is an interactive web application designed to help designers and developers explore and experiment with Tailwind CSS color combinations. It provides a visual way to create, preview, and export color palettes for use in your projects.
 
-Currently, two official plugins are available:
+![Vite TW Color - Tailwind Color Explorer](https://via.placeholder.com/800x400?text=Vite+TW+Color+Explorer)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Interactive Color Grid
+- View all Tailwind colors in an organized, responsive grid
+- See both Tailwind class names and hex values for each color
+- Copy color values directly from the UI
+- Compact color flyout menu for quick color selection
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Component Previews (Coming Soon)
+- Preview your color selections on common UI components
+- Login card with email and password fields
+- Profile card with user information
+- Settings card with dropdown menu and toggle switches
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Palette Management (In Progress)
+- Create temporary color palettes
+- Apply palettes to preview components in real-time
+- Save and load palettes
+
+### Export Functionality (Coming Soon)
+- Download palette as JSON for use in other projects
+- Copy color values in various formats (Tailwind classes, hex, RGB)
+
+## Current Status
+
+Vite TW Color is currently in its initial development phase. Here's what's working:
+
+- ✅ Basic project setup with Vite, React, TypeScript, and Tailwind CSS
+- ✅ Interactive TailwindColorGrid component with all Tailwind colors
+- ✅ Click-to-copy functionality for Tailwind class names and hex values
+- ✅ Responsive grid layout that adapts to different screen sizes
+- ✅ Enhanced visual design with hover effects and visual feedback
+- ✅ Compact ColorFlyoutMenu component for quick color selection
+
+In progress:
+- 🔄 Color selection for building palettes
+- 🔄 Palette state management
+
+## Tech Stack
+
+- **Frontend Framework**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (built on Radix UI primitives)
+- **Icons**: Lucide React
+- **Form Handling**: React Hook Form with Zod validation
+- **Package Manager**: pnpm
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm (v8 or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/vite-tw-color.git
+   cd vite-tw-color
+   ```
+
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:5173
+   ```
+
+### Build for Production
+
+```bash
+pnpm build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Preview Production Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+pnpm preview
 ```
+
+## Usage
+
+1. **Explore Colors**: Browse through the color grid to see all available Tailwind colors.
+2. **Copy Color Values**: Click on any color swatch to copy its Tailwind class name or hex value.
+3. **Create Palettes**: (Coming soon) Select colors to create a temporary palette.
+4. **Preview Components**: (Coming soon) See how your selected colors look on common UI components.
+5. **Export Palette**: (Coming soon) Export your color palette as JSON for use in other projects.
+
+## Project Structure
+
+```
+src/
+├── App.tsx                # Main application entry point
+├── features/              # Feature modules
+│   ├── color-grid/        # Color grid feature
+│   │   ├── components/    # Feature-specific components
+│   │   └── index.ts       # Feature exports
+├── components/            # Shared components
+│   └── ui/                # shadcn/ui components
+├── hooks/                 # Shared hooks
+├── lib/                   # Utility functions and helpers
+└── assets/                # Static assets
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Free to Use As Is
+
+This project is provided as-is, with no restrictions on usage. You are free to use, modify, and distribute it without any obligations.
+
+---
+
+Built with ❤️ using React, TypeScript, and Tailwind CSS.
