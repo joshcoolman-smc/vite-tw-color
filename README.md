@@ -2,7 +2,7 @@
 
 Vite TW Color is an interactive web application designed to help designers and developers explore and experiment with Tailwind CSS color combinations. It provides a visual way to create, preview, and export color palettes for use in your projects.
 
-![Vite TW Color - Tailwind Color Explorer](https://via.placeholder.com/800x400?text=Vite+TW+Color+Explorer)
+![Vite TW Color - Tailwind Color Explorer](public/sreenshot.jpg)
 
 ## Features
 
